@@ -1,0 +1,623 @@
+\documentclass{article}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage[numbers]{natbib}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={6in, 8in}, margin=1in]{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{float}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+% TODO: add the time curve
+
+% \usepackage[legalpaper, landscape, margin=2in]{geometry}
+
+\title{Photoluminescence in Bi2Se3}
+
+
+\author{Shaked Rosenstein}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+\subsection{Time Resolved ARPES}
+\subsection{Photoluminescence}
+\subsection{Excitons}
+articles explaining what are excitons theoretically, what are their characteristics, in what conditions they can exist, and what prinicples govern them:
+- ON THE TRANSFORMATION OF LIGHT INTO HEAT IN SOLIDS. (Frenkel Excitons) describing localized, tightly bound excitons with large binding energy.
+- Gregory Wannier excitons describing unlocalized excitons spanning more than one unit cell, with small binding energy
+Excitons are excitations/quasi-particles made of bound pairs of electrons and holes.
+- first experimental observation of excitons - `Line absorption spectrum of light in cuprous oxide crystals`, `Optical Spectrum of Excitons in the Crystal Lattice.
+E. F. GR, oss`
+
+Common characteristics of excitons include:
+1. longer decay times than other excitations with similar momentum and energy.
+2. (?) later onset than excitations with similar momentum and energy - electrons are first excited to a conduction band state, and then decay to a bound state. (?)
+3. lower state energies than other excitations, due to the binding energy between the electron and the hole. (can include here reference to `https://arxiv.org/pdf/2012.15328` - "Direct measurement of key exciton properties: energy, dynamics and spatial distribution of the wave function")
+4. recombination emission + modified absorption + Rydberg series (?)
+
+\subsubsection{Exciton Measurements}
+articles claiming to measure excitons (preferably at least one article relying on each of the characteristics (long lifetime, modified energy)):
+* ARPES:
+    - modified energy - (`https://arxiv.org/pdf/2012.15328` - "Direct measurement of key exciton properties: energy, dynamics and spatial distribution of the wave function").
+    - long lifetime - Lanzara's article
+* photoluminescence:
+    - modified energy -
+    - long lifetime -
+* transport? - malkanski and broser (supposedly recombination emission away from point of excitation), hopfield and thomas (explaining discrepancies in reflectivity spectrum with non local dielectric constant components)
+\subsection{$Bi_2Se_3$}
+% TODO: add here plot of DFT with Bi2Se3 band structure
+% TODO: add here measured band structure of Bi2Se3 below fermi level from Ittai's article
+\subsection{Photoluminescence in $Bi2Se3$}
+photoluminescence plot:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\linewidth]{plots/measured_bi2se3_photoluminescence.png}
+    \caption{Measured degree of polarization of photoluminescent light, as a function of the input light wavelength.}
+    \label{measured_photoluminescence_power}
+\end{figure}
+\section{Measurements}
+\subsection{$Bi_2Se_3$ Band Structure}
+% TODO: add here spectrum at t0 from 400nm measurements, Gamma-M and Gamma-K so the band structure can be known
+\subsection{Looking for Signatures of Excitonic Populations}
+One possible mechanism for photoluminescence in $Bi_2Se_3$ is the formation of excitons binding an electron and a hole between the two Dirac cones.
+If such excitons exist, their decay would produce photons with energy equal to the binding energy of the exciton, and the electron population would be visible in ARPES as transient occupation near the expected exciton energy level.
+Specifically, a hole near the first Dirac point (at $-0.24\,\text{eV}$ relative to $E_F$) and an electron $2.25\,\text{eV}$ above it would place the excited electron at $\approx 2.01\,\text{eV}$ above $E_F$.
+
+To search for such a signature, we examine Energy Distribution Curves (EDCs) integrated over a narrow momentum window around $k=0$ ($\pm 0.1\,\text{\AA}^{-1}$), where the Dirac cone is centered, at multiple time delays spanning from $-150\,\text{fs}$ to $+700\,\text{fs}$ relative to pump arrival.
+Figure~\ref{fig:edc_roi_arpes} shows the 400\,nm ARPES image at $t \approx 0$--$50\,\text{fs}$ with the integration region highlighted, and Figure~\ref{fig:edc_time_evolution} shows the resulting EDCs for both pump wavelengths.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{plots/edc_roi_arpes_snapshot.png}
+    \caption{ARPES image from the 400\,nm pump measurement at $t = 0$--$50\,\text{fs}$. The shaded vertical strip marks the momentum integration window ($k_x = \pm 0.1\,\text{\AA}^{-1}$) used to compute the EDCs. The dashed horizontal line marks $2.01\,\text{eV}$, the expected energy of an excitonic population $2.25\,\text{eV}$ above the first Dirac point.}
+    \label{fig:edc_roi_arpes}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{plots/edc_time_evolution.png}
+    \caption{EDCs at $k_x \approx 0$ ($\pm 0.1\,\text{\AA}^{-1}$) for 400\,nm (left) and 461\,nm (right) pump wavelengths, at time delays from $-150\,\text{fs}$ to $+700\,\text{fs}$. The dashed vertical line marks $2.01\,\text{eV}$, corresponding to $2.25\,\text{eV}$ above the first Dirac point at $-0.24\,\text{eV}$.}
+    \label{fig:edc_time_evolution}
+\end{figure}
+
+\subsection{Looking for long lived excited states}
+Photoluminescence is often associated with the presence of excitons (quasi particles of bound electron-hole pairs). These states should appear in time-resolved measurements as states with long lifetimes~\cite{bi2te3_excitons_lifetime}.
+Where by long lifetimes, we mean long compared with the dominant lifetime of excited states in the material, which in $Bi_2Se_3$ is of the order of a few hundred femtoseconds.
+Thus by checking for electrons at excited states at delays of several picoseconds, we can look for long lived excited states that may be related to photoluminescence.
+
+However, when looking at the populated excited states, we see that at times later than $700fs$ after the pump hits, there is only a miniscule population at states other than the first dirac cone.
+
+% TODO: add here maybe spectrum at t_0, and at 700fs, of both Gamma-M and Gamma-K, when pumped with 460nm
+
+To quantify how different from long lived states, the excited states of $Bi_2Se_3$ are, we can fit the population in each state as a function of time to a decaying exponent, and extract the life time.
+Broadly speaking, there are two scales for the lifetimes of excited states, a short scale for states at higher energies than the first dirac cone, and a longer scale for those around it.
+Thus, it is better to examine them separately.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/decay_times_1eV_2.5eV_50fs.png}
+    \caption{Decay times of electron populations in $Bi_2Se_3$, at plane $\Gamma-M$ with probe at $S$ polarization, pump at circular polarization, at $450nm$ wavelength.}
+    \label{decay_times_1eV_2.5eV_50fs_450nm}
+\end{figure}
+
+Bands more than $1eV$ above the fermi level, as shown in figure \ref{decay_times_1eV_2.5eV_50fs_450nm}, have decay times shorter than $150fs$ at most. Such short times are not typical of bound states.
+Possibly, at similar values of energy, and momentum, one might be able to see both populations of unbound and bound states. One population having
+a short lifetime, and the other having a long lifetime. If that would be the case, we should expect to see longer lifetimes, when fitting to a decaying exponent, the population as a function of time, starting from a delay later than $0fs$. When
+undertaking this assignment with delays longer than the observed lifetime of $150fs$, the lifetimes appear even shorter than before, as seen in figure \ref{decay_times_1eV_2.5eV_150fs_450nm} (ignoring areas close to the IPS state).
+However, the difference between the two is smaller than the $FWHM$ of the measurement, so it is not something we can truly resolve.
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/decay_times_1eV_2.5eV_150fs.png}
+    \caption{Decay times of electron populations in $Bi_2Se_3$, taken at delays longer than $150fs$, at plane $\Gamma-M$ with probe at $S$ polarization, pump at circular polarization, at $450nm$ wavelength.}
+    \label{decay_times_1eV_2.5eV_150fs_450nm}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/decay_times_0eV_1eV_50fs.png}
+    \caption{Decay times of electron populations in $Bi_2Se_3$, at plane $\Gamma-M$ with probe at $S$ polarization, pump at circular polarization, at $450nm$ wavelength.}
+    \label{decay_times_0eV_1eV_50fs_450nm}
+\end{figure}
+
+At first glance it might seem like there is an anomaly in the decay times of the $0eV$ to $1eV$ energy range, at momentum of $+0.6\AA^{-1}$ and energy of $+0.6eV$.
+
+\subsubsection{Anomalous Life Time Localized Momenta State}
+
+In the $\Gamma$-M direction, with probe polarization S, we observe two spatially localized features in the ARPES signal at binding energies of approximately $0.49$--$0.61\,\mathrm{eV}$ above $E_F$, situated symmetrically at momenta $k \approx \pm 0.5$--$0.75\,\text{\AA}^{-1}$.
+These ``blob'' features are distinguished by anomalously long excited-state lifetimes relative to the surrounding spectral weight at similar energies, persisting well beyond $700\,\mathrm{fs}$ after pump excitation.
+They are most prominent at probe S polarization and are visible for both 400\,nm and 461\,nm pump wavelengths.
+
+\paragraph{ARPES Close-Up Snapshots}
+Figures~\ref{blob_closeup_sum} and~\ref{blob_closeup_cd} show the SUM and CD signals zoomed into the blob energy window ($0.3$--$0.715\,\mathrm{eV}$, $k = \pm 1.0\,\text{\AA}^{-1}$) at four pump-probe delays: $0$, $+250$, $+400$, and $+700\,\mathrm{fs}$.
+The blobs are already visible at $t = 0$ and retain significant spectral weight at $+700\,\mathrm{fs}$, a timescale at which most other excited-state features have decayed.
+The CD panels reveal that the blobs also carry a measurable circular dichroism signal, indicating spin-polarized occupancy consistent with the Rashba-split surface or bulk states in this energy and momentum range.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{plots/gamma_m_blob_closeup_SUM_Gamma_M_S.png}
+    \caption{$\Gamma$-M close-up ARPES snapshots (SUM signal) with probe $S$ polarization, at four time delays ($0$, $+250$, $+400$, $+700\,\mathrm{fs}$), for 461\,nm (top row) and 400\,nm (bottom row) pump wavelengths. Two spherical blob features are visible at $k \approx \pm 0.5$--$0.75\,\text{\AA}^{-1}$ and $E - E_F \approx 0.5\,\mathrm{eV}$, persisting to long delays. Band structure lines are overlaid.}
+    \label{blob_closeup_sum}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{plots/gamma_m_blob_closeup_CD_Gamma_M_S.png}
+    \caption{$\Gamma$-M close-up ARPES snapshots (CD signal) with probe $S$ polarization at the same four time delays and pump wavelengths as Figure~\ref{blob_closeup_sum}. A nonzero CD at the blob positions suggests spin-selective occupation of the localized state.}
+    \label{blob_closeup_cd}
+\end{figure}
+
+\paragraph{ROI Time Series and Gaussian-Exponential Fit}
+To quantify the lifetime of the blobs, we integrated the ARPES intensity inside two ROIs centered on the left ($k = -0.75$ to $-0.5\,\text{\AA}^{-1}$) and right ($k = +0.5$ to $+0.75\,\text{\AA}^{-1}$) blobs, both within the energy window $0.49$--$0.61\,\mathrm{eV}$.
+Figure~\ref{blob_time_series} shows the resulting time traces for 400\,nm and 461\,nm pump wavelengths, each fit to a Gaussian-exponential model.
+The extracted decay times are $\tau \approx 330$--$380\,\mathrm{fs}$ for both blobs at both wavelengths, substantially longer than the sub-$100\,\mathrm{fs}$ lifetimes typical of hot electrons at comparable energies in $\mathrm{Bi_2Se_3}$.
+The two blobs decay symmetrically, and both wavelengths yield comparable $\tau$ values, suggesting the localized state is an intrinsic feature of the $\Gamma$-M band structure rather than a resonance specific to a particular photon energy.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{plots/gamma_m_blob_time_series.png}
+    \caption{Left: ARPES snapshot at $t = +250\,\mathrm{fs}$ with ROI boxes overlaid for the left blob (dashed), right blob (dashed), and a reference region near $E_F$. Center: normalized ROI intensity vs.\ time delay for each pump wavelength, with Gaussian-exponential fits; fit decay times $\tau$ are indicated. Right: comparison of the left-blob traces for 400\,nm and 461\,nm, onset-aligned.}
+    \label{blob_time_series}
+\end{figure}
+
+\paragraph{Comparison with Neighboring States}
+To test whether the long lifetime is unique to the blob momentum positions, Figure~\ref{blob_vs_center_time_series} compares the left-blob ROI ($k = -0.75$ to $-0.5\,\text{\AA}^{-1}$) against the $\Gamma$-point center ($k = -0.3$ to $+0.3\,\text{\AA}^{-1}$) at the same energy, both in the $\Gamma$-M direction with 461\,nm and 400\,nm pump.
+The center region, which samples the Dirac cone arm, yields $\tau \approx 440$--$455\,\mathrm{fs}$ — notably longer than the blob ($\tau \approx 330$--$360\,\mathrm{fs}$).
+This indicates that within $\Gamma$-M the blob is not the longest-lived feature at this energy; rather, its distinctiveness lies in its spatial localization in momentum and its spectral isolation from the main Dirac cone.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{plots/gamma_m_blob_vs_center_time_series.png}
+    \caption{$\Gamma$-M comparison of the left-blob ROI ($k = -0.75$ to $-0.5\,\text{\AA}^{-1}$) and the $\Gamma$-point center ($k = -0.3$ to $+0.3\,\text{\AA}^{-1}$), both at $E - E_F = 0.49$--$0.61\,\mathrm{eV}$, probe $S$, for 400\,nm and 461\,nm pump. Gaussian-exponential fits are overlaid; the right panel shows onset-aligned traces up to $2000\,\mathrm{fs}$.}
+    \label{blob_vs_center_time_series}
+\end{figure}
+
+Figure~\ref{blob_gm_vs_gk_time_series} repeats the left-blob ROI measurement in the $\Gamma$-K direction for 461\,nm, using a high-statistics summed dataset, and overlays it with the $\Gamma$-M result.
+The same $(k, E)$ window yields $\tau \approx 454\,\mathrm{fs}$ in $\Gamma$-K versus $\tau \approx 358\,\mathrm{fs}$ in $\Gamma$-M, a difference of $\sim\!25\%$.
+The longer $\Gamma$-K lifetime suggests that at this momentum and energy the two crystal directions sample different electronic states: the blob in $\Gamma$-M is a distinct, relatively short-lived localized feature, while the corresponding $\Gamma$-K region captures a background population with slower dynamics.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{plots/gamma_m_vs_k_blob_461nm.png}
+    \caption{Comparison of the left-blob ROI ($k = -0.75$ to $-0.5\,\text{\AA}^{-1}$, $E - E_F = 0.49$--$0.61\,\mathrm{eV}$) in the $\Gamma$-M and $\Gamma$-K directions for 461\,nm pump, probe $S$. Left and center: ARPES snapshots at $t = +250\,\mathrm{fs}$ with the ROI indicated. Right: normalized time traces with Gaussian-exponential fits; the $\Gamma$-M blob decays faster ($\tau \approx 358\,\mathrm{fs}$) than the same region in $\Gamma$-K ($\tau \approx 454\,\mathrm{fs}$), consistent with the blob being a direction-specific localized state.}
+    \label{blob_gm_vs_gk_time_series}
+\end{figure}
+
+\paragraph{Pixel-Resolved Decay Times}
+Figure~\ref{blob_tau_map} shows pixel-resolved exponential decay times across the full $\Gamma$-M momentum range ($\pm 1.0\,\text{\AA}^{-1}$) in the blob energy window, fitted from $t > 150\,\mathrm{fs}$ to exclude the prompt response near $t = 0$.
+The two blob positions stand out as distinct islands of long lifetime, confirming that the anomalous dynamics are spatially confined in $(k, E)$ space and are not an artifact of the fitting window.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{plots/gamma_m_blob_tau_map.png}
+    \caption{Pixel-resolved exponential decay times ($t > 150\,\mathrm{fs}$) in the $\Gamma$-M direction with probe $S$ polarization, for 400\,nm (left) and 461\,nm (right) pump wavelengths. Color scale: $50$--$2000\,\mathrm{fs}$ (terrain colormap). The two blob regions at $k \approx \pm 0.6\,\text{\AA}^{-1}$, $E - E_F \approx 0.5\,\mathrm{eV}$ appear as islands of anomalously long lifetime.}
+    \label{blob_tau_map}
+\end{figure}
+
+However, it is more likely
+due to the population of those states reaching their maximum values at later times. When extracting the lifetime of populations later than $600fs$, there are no interesting features in the lifetimes image.
+Specifically, the extracted lifetime of those supposedly interesting states is much shorter.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/decay_times_0eV_1eV_600fs.png}
+    \caption{Decay times of electron populations in $Bi_2Se_3$, taken at delays longer than 600fs, at plane $\Gamma-M$ with probe at $S$ polarization, pump at circular polarization, at $450nm$ wavelength.}
+    \label{decay_times_0eV_1eV_600fs_450nm}
+\end{figure}
+
+% check whether there is a reason to go looking at the much longer delays of 8, 16ps.
+
+Another important feature of the photoluminescence we are interested in, is that it is conserving the incoming light's polarization.
+If the emission of light is both conserving polarization, and supposedly related to long-lived excited states, we should be able to see long lifetimes for the polarization of the excited states.
+To be specific, if we define the degree of polarization of a certain state as $\frac{I_{C_1}-I_{C_2}}{I_{C_1}+I_{C_2}}$ ($I_{C_1(2)}$ - the electron photoemission intensity when pumped with light with polarization $C_{1(2)}$),
+ we can analyze how the polarization evolves over time, and we expect to find a region with unusually long lifetimes of this quantity.
+
+For practical reasons, $\frac{I_{C_1}-I_{C_2}}{I_{C_1}+I_{C_2}}$ tends to be unreasonably large and noisy in areas of low counts.
+To mitigate this problem, we look at $\frac{I_{C_1}-I_{C_2}}{A + I_{C_1}+I_{C_2}}$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/polarization_decay_460nm.png}
+    % TODO: consider adding here a different color scheme for the decay times plot - white here means both long life time and unsuccesful fit
+    \caption{Time dynamics of the polarization measure $\frac{I_{C_1}-I_{C_2}}{A + I_{C_1}+I_{C_2}}$.}
+    \label{polarization_decay_dynamics_460nm}
+\end{figure}
+On the left, we have the maximum values of the polarization measure in each pixel, and on the right we have the decay time, extracted by fitting the polarization measure to a gaussian decaying exponent.
+It seems as if the characteristic decay time of the polarization measure is no more than a few dozen femtoseconds. In contrast to our expectations from a polarization dependent long lived excitation.
+
+\subsection{Comparing photoluminescing vs. non-photoluminescing wavelengths}
+
+To finalize our conclusions from examining life times of excited states, when pumping the sample with a photoluminescing wavelength ($460nm$), do not seem to suggest the existence of a long lived excitation.
+Excited states $>1eV$ above $E_F$ have life times $<150fs$, and otherwise, excited states that are not a part of the first dirac cone, have life times $<300fs$.
+States in the first dirac cone, close to $E_F$ do seem to have longer life times $>2000fs$.
+Perhaps a comparison of states excited by a non-photoluminescing wavelength with those excited by a wavelength that does generate Photoluminescence might shed brighter light on this mystery.
+
+
+\subsubsection{Time Dynamics Above Fermi Level}
+$460nm$ $(2.69eV)$ and $400nm$ $(3.1eV)$ - $\Gamma-K$ - probe $P$ excitation dynamics
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Excitation_Dynamics_Gamma-K_probe_P_400nm_&_460nm__-_.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-K$ with probe at $P$ polarization, pump at circular polarization, at $400nm$ wavelength.
+    (a-e) 400nm, at 50fs, 150fs, 250fs, 400fs, 700fs. (f-j) 460nm, at 50fs, 150fs, 250fs, 400fs, 700fs}
+    \label{460nm_400nm_time_dynamics_gamma_k_P}
+\end{figure}
+
+$460nm$ $(2.69eV)$ and $400nm$ $(3.1eV)$ - $\Gamma-M$ - probe $S$ excitation dynamics
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Excitation_Dynamics_Gamma-M_probe_S_400nm_&_460nm__-_.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-M$ with probe at $S$ polarization, pump at circular polarization, at $400nm$ wavelength.
+    (a-e) 400nm, at 50fs, 150fs, 250fs, 400fs, 700fs. (f-j) 460nm, at 50fs, 150fs, 250fs, 400fs, 700fs}
+    \label{460nm_400nm_time_dynamics_gamma_m_S}
+\end{figure}
+
+Comparing the two excitation dynamics ($400nm$ and $460nm$) doesn't seem unexpected, with a $400nm$ pump higher energy states are excited at first, but they seem to decay in a similar fashion to each other.
+Also, if a $400nm$ photon can populate all the excited states that a $460nm$ photon does, and even more, it is unexpected that only the latter generates photoluminescence.
+We thus ask ourselves if there is a more subtle difference in the decay dynamics between the two that might be related to the emission of light.
+\subsubsection{Comparing Decay Times}
+Looking at the difference between decay times of states populated by a $400nm$ pump, and by a $460nm$ pump gives the following result:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/tau_comparison_400nm_vs_460nm_1.0eV_3.0eV.png}
+    \caption{Comparing decay times, $400nm$ pump and $460nm$ pump. Energy range $1.0eV-3.0eV$ relative to $E_F$.}
+    \label{460nm_400nm_decay_times_1.0eV_3.0eV}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/tau_comparison_400nm_vs_460nm_0.0eV_1.0eV.png}
+    \caption{Comparing decay times, $400nm$ pump and $460nm$ pump. Energy range $0eV-1.0eV$ relative to $E_F$.}
+    \label{460nm_400nm_decay_times_0eV_1.0eV}
+\end{figure}
+On those plots, are also lines representing electron bands, and dashed lines, representing bands that might appear in the measurement as they are probed by the pump (IPS band).
+In contrast to what might suggest presence of longer life times when pumping with photoluminescing light, at higher bands, the lifetime at $460nm$ pump seems shorter than at $400nm$ pump.
+Specifically, at $460nm$, the area around the IPS band has a distinctly shorter lifetime, but it has no significance for us, and should be ignored.
+For lower bands, the difference seems negligible.
+
+% TODO: consider adding here all the other pump wavelengths' results
+
+\subsubsection{Direct optical transitions}
+If no anomaly in electron lifetimes tends to correlate with light emission, short time-scaled direct optical transitions might turn out to be correlated with the observed photoluminescence.
+With the band structure measured, both below fermi level, and above it, in hand, we can map possible optical transitions for both the pumping wavelength and the emitted one.
+
+First, considering a non-photoluminescing wavelength of $400nm$:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/transitions_400_gamma_k.png}
+    \caption{Optical transitions along with the measured band structure, at $\Gamma-K$, for $400nm$.}
+    \label{transitions_400_gamma_k}
+\end{figure}
+
+And in comparison, for $460nm$ pump wavelength:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/transitions_460_gamma_k.png}
+    \caption{Optical transitions along with the measured band structure, at $\Gamma-K$, for $460nm$.}
+    \label{transitions_460_gamma_k}
+\end{figure}
+
+Direct optical transitions can occur if an electron and a hole, are placed withing negligible momentum difference from eachother, and within a fitting energy difference from eachother.
+Naturally, below fermi energy, there are no holes available for a transition, unless the pump photon energy enabled their presence.
+With these two notions in mind, and with the maps of possible transitions in hand, we can try to explain 4 main characteristics of the light emission:
+\begin{enumerate}
+    \item Starts at pump wavelengths shorter than $523nm$.
+    \item No longer polarized at wavelengths shorter than $413nm$. % [CRITICAL] TODO: is it actually not visible, or is it simply unpolarized?
+    \item Preserves the pump polarization.
+    \item Emitted light is mostly of wavelength $548nm$ (photon energy $2.26eV$).
+\end{enumerate}
+
+In terms of differences between transition maps, one can point to two differences that could be related to light emission:
+\subsubitem{Electrons in Bulk band "BC2"}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/transitions_460_top_gamma_m.png}
+    \caption{Transitions involving the bulk conduction band, when pumping with $460nm$. A $400nm$ pump would not be able to excite electrons directly to this band.}
+    \label{transitions_460_gamma_m_bulk_conduction}
+\end{figure}
+If the electrons from the bulk conduction band "BC2" are responsible for the light emission, it turns out that at pump wavelength $400nm$, even though they are populated, it is not from a direct optical transition.
+Which would make the event of polarized light emission very unlikely.
+Examining different wavelengths shows this transition is possible at wavelengths not shorter than $425nm$. And on the longer side of the wavelength range, wavelengths shorter than $480nm$ are exciting electrons to momenta close to the point from which they can decay to emit the observed wavelength.
+
+\subsubitem{Holes in "RSS"}
+
+
+\subsubsection{BC2 Band Dynamics}
+
+Given the hypothesis that electrons excited into the BC2 bulk conduction band are responsible for the photoluminescence, we performed a targeted characterization of BC2 using three complementary measurements.
+
+\paragraph{ARPES Close-Up Snapshots}
+The BC2 band is visible in ARPES as a populated state at approximately $2.0$--$2.6\,\mathrm{eV}$ above the Fermi level, centered near $k = 0$ along $\Gamma$-K.
+Figure~\ref{bc2_closeup_sum_gk_s} shows the SUM (total intensity, both pump circular polarizations summed) signal zoomed into this energy window at five time delays, for the $\Gamma$-K direction with probe polarization S, across all three pump wavelengths.
+The excited population appears transiently near $t = 0$ and decays over the following hundreds of femtoseconds.
+Figure~\ref{bc2_closeup_cd_gk_s} shows the corresponding circular dichroism (CD) signal — the difference between left- and right-circularly-pumped ARPES images.
+A nonzero CD in the BC2 region indicates that the pump preferentially populates spin-polarized states, consistent with the optical selection rules of a helicity-sensitive transition.
+The persistence of CD at $t = 0$ but its reduction at later delays suggests that the initial spin selectivity of the excitation is gradually lost as electrons scatter.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{plots/bc2_closeup_SUM_Gamma_K_S.jpg}
+    \caption{BC2 ARPES close-up snapshots (SUM signal) along $\Gamma$-K with probe $S$ polarization, at five time delays from $-50\,\mathrm{fs}$ to $+150\,\mathrm{fs}$, for 461\,nm, 423\,nm, and 400\,nm pump wavelengths. The band structure overlay (lines) marks the expected BC2 band position. The signal near $2.3\,\mathrm{eV}$ above $E_F$ appears transiently following pump excitation.}
+    \label{bc2_closeup_sum_gk_s}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{plots/bc2_closeup_CD_Gamma_K_S.jpg}
+    \caption{BC2 ARPES close-up snapshots (CD signal) along $\Gamma$-K with probe $S$ polarization. CD = (left circular) $-$ (right circular) pump. A nonzero CD in the BC2 window reflects spin-selective excitation. For 461\,nm, the $+100\,\mathrm{fs}$ and $+150\,\mathrm{fs}$ panels are filled from an auxiliary SUM dataset.}
+    \label{bc2_closeup_cd_gk_s}
+\end{figure}
+
+\paragraph{ROI Time Series and Gaussian-Exponential Fit}
+To quantify the time dynamics of BC2, we integrated the ARPES intensity inside a region of interest (ROI) spanning $2.23$--$2.37\,\mathrm{eV}$ and $\pm 0.132\,\text{\AA}^{-1}$ around $\Gamma$ and tracked it as a function of pump-probe delay.
+Figure~\ref{bc2_time_series} compares the resulting time traces for the 400\,nm and 461\,nm pump wavelengths.
+Each trace is fit to a Gaussian-exponential model (Gaussian rise followed by exponential decay), from which we extract a peak time $t_0$ and a decay time constant $\tau$.
+An alignment offset between the two traces is automatically estimated from the onset of signal above the pre-pump baseline.
+Both wavelengths show a fast rise within the instrument response and a decay on the scale of a few hundred femtoseconds, consistent with electron-phonon relaxation out of BC2.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{plots/bc2_time_series.png}
+    \caption{Left: ARPES snapshot at $t = +50\,\mathrm{fs}$ with ROI boxes overlaid (dashed rectangles) for the BC2 band and a reference region near $E_F$. Center: normalized BC2 ROI intensity vs.\ time delay for each pump wavelength, with Gaussian-exponential fits. Right: comparison panel with the two traces onset-aligned, showing the similar decay dynamics.}
+    \label{bc2_time_series}
+\end{figure}
+
+\paragraph{Pixel-Resolved Decay Times}
+Figure~\ref{bc2_tau_map} shows pixel-resolved exponential decay times fitted across the BC2 energy window ($2.0$--$2.6\,\mathrm{eV}$) for both pump wavelengths.
+The map reveals the distribution of lifetimes across momentum and energy within BC2, with values concentrated in the $0$--$100\,\mathrm{fs}$ range.
+The consistency of the decay time scale between 400\,nm and 461\,nm pump — despite only one wavelength producing photoluminescence — suggests that the BC2 lifetime alone does not determine whether light is emitted.
+Rather, the availability of a suitable final state for the optical transition, which depends on which states the pump can populate, is the key discriminating factor.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{plots/bc2_tau_map_2.0eV_2.6eV.png}
+    \caption{Pixel-resolved exponential decay times in the BC2 energy window ($2.0$--$2.6\,\mathrm{eV}$) for 400\,nm (left) and 461\,nm (right) pump wavelengths, $\Gamma$-K direction. Color scale is clamped to $0$--$100\,\mathrm{fs}$. Band structure lines mark the BC2 band position.}
+    \label{bc2_tau_map}
+\end{figure}
+
+
+
+\subsubsection{Pump CD}
+$400nm$ CDs
+$3.1eV$ - $400nm$ - $\Gamma-K$ - probe $P$ sum both pump polarizations + CD
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Gamma-K_Probe_P_Pol_Delay_-50fs__-__400nm_CD_400nm_SUM.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-K$ with probe at $P$ polarization, pump at circular polarization, at $400nm$ wavelength.}
+    \label{400nm_gamma_k_probe_P_sum_cd}
+\end{figure}
+
+$3.1eV$ - $400nm$ - $\Gamma-K$ - probe $S$ sum both polarizations + CD
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Gamma-K_Probe_S_Pol_Delay_-50fs__-__400nm_CD400nm_SUM.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-K$ with probe at $S$ polarization, pump at circular polarization, at $400nm$ wavelength.}
+    \label{400nm_gamma_k_probe_S_sum_cd}
+\end{figure}
+
+$3.1eV$ - $400nm$ - $\Gamma-M$ - probe $P$ sum both pump polarizations + CD
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Gamma-M_Probe_P_Pol_Delay_-50fs__-__400nm_CD_400nm_SUM.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-M$ with probe at $P$ polarization, pump at circular polarization, at $400nm$ wavelength.}
+    \label{400nm_gamma_m_probe_P_sum_cd}
+\end{figure}
+
+$3.1eV$ - $400nm$ - $\Gamma-M$ - probe $S$ sum both pump polarizations + CD
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Gamma-M_Probe_S_Pol_Delay_-50fs__-__400nm_CD_400nm_SUM.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-M$ with probe at $S$ polarization, pump at circular polarization, at $400nm$ wavelength.}
+    \label{400nm_gamma_m_probe_S_sum_cd}
+\end{figure}
+
+
+$2.69eV$ - $461nm$ - $\Gamma-K$ - probe $P$ sum both pump polarizations + CD
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Gamma-K_Probe_P_Pol_Delay_50fs__-__461nm_CD_461nm_SUM.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-K$ with probe at $P$ polarization, pump at circular polarization, at $461nm$ wavelength.}
+    \label{461nm_gamma_k_probe_P_sum_cd}
+\end{figure}
+
+$2.69eV$ - $461nm$ - $\Gamma-K$ - probe $S$ sum both pump polarizations + CD
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Gamma-K_Probe_S_Pol_Delay_35fs__-__461nm_CD_461nm_SUM.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-K$ with probe at $S$ polarization, pump at circular polarization, at $461nm$ wavelength.}
+    \label{461nm_gamma_k_probe_S_sum_cd}
+\end{figure}
+
+$2.69eV$ - $461nm$ - $\Gamma-M$ - probe $P$ sum both pump polarizations + CD
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Gamma-M_Probe_P_Pol_Delay_-35fs__-__461nm_CD_461nm_SUM.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-M$ with probe at $P$ polarization, pump at circular polarization, at $461nm$ wavelength.}
+    \label{461nm_gamma_m_probe_P_sum_cd}
+\end{figure}
+
+$2.69eV$ - $461nm$ - $\Gamma-M$ - probe $S$ sum both pump polarizations + CD
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Gamma-M_Probe_S_Pol_Delay_-35fs__-__461nm_CD_461nm_SUM.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-M$ with probe at $S$ polarization, pump at circular polarization, at $461nm$ wavelength.}
+    \label{461nm_gamma_m_probe_S_sum_cd}
+\end{figure}
+
+
+\subsubsection{Optical Response Below Fermi level}
+
+When looking at a spectrum of bands above fermi level, one can notice that the time dynamics is not uniform over energy and momentum. For example, generally speaking, excited bands at higher energies decay more quickly than bands at lower energies.
+But also $t_0$, the time at which the occupation started rising, changes with momentum and energy.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{plots/pixel_resolved_time_dynamics_Bi2Se3_Gamma-K_probe_S_pump_400nm.png}
+    \caption{Time dynamics plot for measurement of $Bi_2Se_3$, at plane $\Gamma-K$ with probe at $S$ polarization, pump at circular polarization, at $400nm$ wavelength. Areas with the lowest $t_0$ values are assumed to be areas where electrons were excited to directly by the pump.}
+    \label{400nm_gamma_k_probe_S_time_dynamics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{plots/pixel_resolved_time_dynamics_Bi2Se3_Gamma-K_probe_P_pump_400nm.png}
+    \caption{Time dynamics plot for measurement of $Bi_2Se_3$, at plane $\Gamma-K$ with probe at $P$ polarization, pump at circular polarization, at $400nm$ wavelength. Areas with the lowest $t_0$ values are assumed to be areas where electrons were excited to directly by the pump.}
+    \label{400nm_gamma_k_probe_P_time_dynamics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{plots/pixel_resolved_time_dynamics_Bi2Se3_Gamma-K_probe_P_pump_461nm.png}
+    \caption{Time dynamics plot for measurement of $Bi_2Se_3$, at plane $\Gamma-K$ with probe at $P$ polarization, pump at circular polarization, at $461nm$ wavelength. Areas with the lowest $t_0$ values are assumed to be areas where electrons were excited to directly by the pump.}
+    \label{461nm_gamma_k_probe_P_time_dynamics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{plots/pixel_resolved_time_dynamics_Bi2Se3_Gamma-M_probe_S_pump_400nm.png}
+    \caption{Time dynamics plot for measurement of $Bi_2Se_3$, at plane $\Gamma-M$ with probe at $S$ polarization, pump at circular polarization, at $400nm$ wavelength. Areas with the lowest $t_0$ values are assumed to be areas where electrons were excited to directly by the pump.}
+    \label{400nm_gamma_m_probe_S_time_dynamics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{plots/pixel_resolved_time_dynamics_Bi2Se3_Gamma-M_probe_S_pump_461nm.png}
+    \caption{Time dynamics plot for measurement of $Bi_2Se_3$, at plane $\Gamma-M$ with probe at $S$ polarization, pump at circular polarization, at $461nm$ wavelength. Areas with the lowest $t_0$ values are assumed to be areas where electrons were excited to directly by the pump.}
+    \label{461nm_gamma_m_probe_S_time_dynamics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{plots/pixel_resolved_time_dynamics_Bi2Se3_Gamma-M_probe_P_pump_400nm.png}
+    \caption{Time dynamics plot for measurement of $Bi_2Se_3$, at plane $\Gamma-M$ with probe at $P$ polarization, pump at circular polarization, at $400nm$ wavelength. Areas with the lowest $t_0$ values are assumed to be areas where electrons were excited to directly by the pump.}
+    \label{400nm_gamma_m_probe_P_time_dynamics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{plots/pixel_resolved_time_dynamics_Bi2Se3_Gamma-M_probe_P_pump_461nm.png}
+    \caption{Time dynamics plot for measurement of $Bi_2Se_3$, at plane $\Gamma-M$ with probe at $P$ polarization, pump at circular polarization, at $461nm$ wavelength. Areas with the lowest $t_0$ values are assumed to be areas where electrons were excited to directly by the pump.}
+    \label{461nm_gamma_m_probe_P_time_dynamics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{plots/pixel_resolved_time_dynamics_Bi2Se3_Gamma-K_probe_P_pump_450nm.png}
+    \caption{Time dynamics plot for measurement of $Bi_2Se_3$, at plane $\Gamma-K$ with probe at $P$ polarization, pump at circular polarization, at $450nm$ wavelength. Areas with the lowest $t_0$ values are assumed to be areas where electrons were excited to directly by the pump.}
+    \label{450nm_gamma_K_probe_P_time_dynamics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{plots/pixel_resolved_time_dynamics_Bi2Se3_Gamma-K_probe_S_pump_450nm.png}
+    \caption{Time dynamics plot for measurement of $Bi_2Se_3$, at plane $\Gamma-K$ with probe at $S$ polarization, pump at circular polarization, at $450nm$ wavelength. Areas with the lowest $t_0$ values are assumed to be areas where electrons were excited to directly by the pump.}
+    \label{450nm_gamma_K_probe_S_time_dynamics}
+\end{figure}
+
+
+\section{All Measurements}
+\subsubsection{Time Dynamics Above Fermi}
+
+$460nm$ $(2.69eV)$ and $400nm$ $(3.1eV)$ - $\Gamma-K$ - probe $S$ excitation dynamics
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Excitation_Dynamics_Gamma-K_probe_S_400nm_&_460nm__-_.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-K$ with probe at $S$ polarization, pump at circular polarization, at $400nm$ wavelength.
+    (a-e) 400nm, at 50fs, 150fs, 250fs, 400fs, 700fs. (f-j) 460nm, at 50fs, 150fs, 250fs, 400fs, 700fs}
+    \label{460nm_400nm_time_dynamics_gamma_k_S}
+\end{figure}
+
+$460nm$ $(2.69eV)$ and $400nm$ $(3.1eV)$ - $\Gamma-M$ - probe $P$ excitation dynamics
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Excitation_Dynamics_Gamma-M_probe_P_400nm_&_460nm__-_.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-M$ with probe at $P$ polarization, pump at circular polarization, at $400nm$ wavelength.
+    (a-e) 400nm, at 50fs, 150fs, 250fs, 400fs, 700fs. (f-j) 460nm, at 50fs, 150fs, 250fs, 400fs, 700fs}
+    \label{460nm_400nm_time_dynamics_gamma_m_P}
+\end{figure}
+
+
+\subsubsection{Pump CD}
+
+$423nm$ CDS
+$2.931eV$ - $423nm$ - $\Gamma-K$ - probe $P$ sum both pump polarizations + CD
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Gamma-K_Probe_P_Pol_Delay_0fs__-__423nm_CD_423nm_SUM.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-K$ with probe at $P$ polarization, pump at circular polarization, at $423nm$ wavelength.}
+    \label{423nm_gamma_k_probe_P_sum_cd}
+\end{figure}
+
+$2.931eV$ - $423nm$ - $\Gamma-K$ - probe $S$ sum both pump polarizations + CD
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Gamma-K_Probe_S_Pol_Delay_0fs__-__423nm_CD_423nm_SUM.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-K$ with probe at $S$ polarization, pump at circular polarization, at $423nm$ wavelength.}
+    \label{423nm_gamma_k_probe_S_sum_cd}
+\end{figure}
+
+$450nm$ CDs
+$2.755eV$ - $450nm$ - $\Gamma-K$ - probe $P$ sum both pump polarizations + CD
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Gamma-K_Probe_P_Pol_Delay_-50fs__-__450nm_CD_450nm_SUM.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-K$ with probe at $P$ polarization, pump at circular polarization, at $450nm$ wavelength.}
+    \label{450nm_gamma_k_probe_P_sum_cd}
+\end{figure}
+
+$2.408eV$ - $515nm$ - $\Gamma-K$ - probe $P$ sum both pump polarizations + CD
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/Gamma-K_Probe_P_Pol_Delay_50fs__-__515nm_CD_515nm_SUM.png}
+    \caption{$Bi_2Se_3$, at plane $\Gamma-K$ with probe at $P$ polarization, pump at circular polarization, at $515nm$ wavelength.}
+    \label{515nm_gamma_k_probe_P_sum_cd}
+\end{figure}
+
+\subsubsection{Pixel Resolved Time Dynamics}
+\section{methods}
+In order to generate a plot like the one in , one can use the following code snippet, assuming it is data created by $tau\_daq$ data acquisition program.
+\begin{lstlisting}[language=Python]
+from analysis.analysis_tools import read_sweep_data, display_pixel_resolved_time_dynamics, concat_energy_datas, remove_bias, remove_e_fermi
+
+data = read_sweep_data("base_directory_1", key_words=["kw_1", "kw_2", "kw_3"])
+data_1 = data[0]
+data = read_sweep_data("base_directory_2", key_words=["kw_1", "kw_2", "kw_3"])
+data_2 = data[0]
+data = concat_energy_datas([data_1, data_2])[0]
+data = remove_bias(remove_e_fermi([data]))[0]
+display_pixel_resolved_time_dynamics(data, plot_title="plot title",
+)
+\end{lstlisting}
+\bibliographystyle{plain}
+\bibliography{refs}
+\end{document}
