@@ -87,20 +87,23 @@ def plot_edc_time_evolution(dataset_configs, target_delays, momentum_range=(-0.1
             )
             plotted_labels.append(f"t = {t} fs")
 
-        # Dirac point is at -0.24 eV; excitonic signal expected 2.25 eV above it → ~2.01 eV
-        ax.axvline(2.01, color="gray", linestyle="--", linewidth=1.2, alpha=0.8, label="2.01 eV (DP+2.25)")
+        # Rashba surface state at k=0 is at -1.35 eV → excitonic target 2.25 eV above = 0.90 eV
+        ax.axvline(0.90, color="crimson", linestyle="--", linewidth=1.2, alpha=0.8)
         ax.set_xlabel(r"$E - E_F$ [eV]")
         ax.set_ylabel("Counts")
         ax.set_yscale("log")
         ax.set_ylim(bottom=1e2)
         ax.set_title(config["title"])
-        ax.legend(plotted_labels + ["2.01 eV (DP+2.25)"], fontsize=7, loc="upper right")
+        ax.legend(
+            plotted_labels + ["0.90 eV (RSS+2.25)"],
+            fontsize=7, loc="upper right",
+        )
 
     k_lo, k_hi = momentum_range
     fig.suptitle(
         rf"EDC at $k_x \approx 0$ (±{abs(k_lo):.2f} Å$^{{-1}}$) — Excitonic Population Check"
-        "\n(dashed line: 2.25 eV above Dirac point @ −0.24 eV = 2.01 eV)",
-        fontsize=12,
+        "\nblue dashed: 2.25 eV above RSS at k=0 (−1.35 eV) = 0.90 eV",
+        fontsize=11,
     )
 
     output_path = os.path.join(plots_dir, "edc_time_evolution.png")
