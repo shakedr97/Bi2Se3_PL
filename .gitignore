@@ -6,3 +6,5 @@
 *.flx
 *.log
 *.synctex.gz
+*.fls
+*.out
