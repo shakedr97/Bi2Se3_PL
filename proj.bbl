@@ -1,8 +1,33 @@
 \begin{thebibliography}{1}
 
+\bibitem{chernikov2014exciton}
+A.~Chernikov, T.~C. Berkelbach, H.~M. Hill, A.~Rigosi, Y.~Li, O.~B. Aslan, D.~R. Reichman, M.~S. Hybertsen, and T.~F. Heinz.
+\newblock Exciton binding energy and nonhydrogenic rydberg series in monolayer {WS2}.
+\newblock {\em Physical Review Letters}, 113:076802, 2014.
+
+\bibitem{frenkel1931transformation}
+Yakov Frenkel.
+\newblock On the transformation of light into heat in solids.
+\newblock {\em Physical Review}, 37:17--44, 1931.
+
+\bibitem{gross1952optical}
+E.~F. Gross and N.~A. Karryev.
+\newblock Optical spectrum of excitons in the crystal lattice of cuprous oxide.
+\newblock {\em Doklady Akademii Nauk SSSR}, 84:471--474, 1952.
+
+\bibitem{man2021direct}
+Michael K.~L. Man, Skylar Deckoff-Jones, Amber Winchester, Guohua Shi, Girish Gupta, Cedric Robert, Kenji Watanabe, Takashi Taniguchi, Swastik Kar, Bernhard Urbaszek, and Keshav~M. Dani.
+\newblock Direct measurement of key exciton properties: energy, dynamics, and spatial distribution of the wave function.
+\newblock {\em Science Advances}, 7:eabg0192, 2021.
+
 \bibitem{bi2te3_excitons_lifetime}
 R.~et~al. Mori.
 \newblock Spin-polarized spatially indirect excitons in a topological insulator.
 \newblock {\em Nature}, 614:249--255, 2023.
+
+\bibitem{wannier1937structure}
+Gregory~H. Wannier.
+\newblock The structure of electronic excitation levels in insulating crystals.
+\newblock {\em Physical Review}, 52:191--197, 1937.
 
 \end{thebibliography}

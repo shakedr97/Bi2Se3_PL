@@ -7,6 +7,8 @@
 \usepackage{listings}
 \usepackage{xcolor}
 \usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing, arrows.meta}
 \newcommand{\note}[1]{\textbf{\textcolor{red}{[NOTE: #1]}}}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -53,6 +55,67 @@ Excitons are bound pairs of electrons populating excited states, and holes (unpo
 In solids, they are formed when a negatively charged electron is excited to a certain state above the fermi level, and also pulled by the positively charged hole, either by the hole it left behind when it was excited, or by another hole, and they both form a single excited state.
 If an electron is first excited, and then pulled by a hole to form an exciton, it loses a certain amount of energy to the coloumb attraction, called the binding energy.
 This also means, that to uncouple the electron and the hole, an amount of energy, equal to the binding energy is required.\\
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\linewidth}
+    \centering
+    \begin{tikzpicture}[baseline, scale=0.75, every node/.style={scale=0.75}]
+        % axes
+        \draw[black, -Stealth] (-2.5,0) -- (2.5,0) node[right] {$k$};
+        \draw[black, -Stealth] (0,-2) -- (0,2.5) node[above] {$E$};
+        % bands
+        \draw[line width=1.4pt, blue!30!white, domain=-2:2, samples=50, smooth] plot (\x, {0.3*\x*\x+1.5});
+        \draw[line width=1.4pt, blue!30!white, domain=-2:2, samples=50, smooth] plot (\x, {-0.3*\x*\x-0.5});
+        \node[blue!30!white] at (1.9,1.5) {conduction band};
+        \node[blue!30!white] at (1.6,-1.9) {valence band};
+        % electron and hole
+        \filldraw[blue] (0.4,1.548) circle (2.5pt);
+        \node[blue] at (0.9,1.9) {$e^-$};
+        \filldraw[red] (-0.4,-0.548) circle (2.5pt);
+        \node[red] at (-0.9,-0.5) {$h^+$};
+    \end{tikzpicture}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\linewidth}
+    \centering
+    \begin{tikzpicture}[baseline, scale=0.75, every node/.style={scale=0.75}]
+        \draw[black, -Stealth] (-2.5,0) -- (2.5,0) node[right] {$k$};
+        \draw[black, -Stealth] (0,-2) -- (0,2.5) node[above] {$E$};
+        \draw[line width=1.4pt, blue!30!white, domain=-2:2, samples=50, smooth] plot (\x, {0.3*\x*\x+1.5});
+        \draw[line width=1.4pt, blue!30!white, domain=-2:2, samples=50, smooth] plot (\x, {-0.3*\x*\x-0.5});
+        \filldraw[blue] (0.4,1.548) circle (2.5pt);
+        \filldraw[red] (-0.4,-0.548) circle (2.5pt);
+        % coulomb attraction
+        \draw[purple, <->, decorate, decoration={snake, amplitude=1.2pt, segment length=5pt}, line width=1pt]
+            (0.4,1.548) -- (-0.4,-0.548);
+        \node[purple] at (0.55,0.5) {$F_c$};
+    \end{tikzpicture}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.32\linewidth}
+    \centering
+    \begin{tikzpicture}[baseline, scale=0.75, every node/.style={scale=0.75}]
+        \draw[black, -Stealth] (-2.5,0) -- (2.5,0) node[right] {$k$};
+        \draw[black, -Stealth] (0,-2) -- (0,2.5) node[above] {$E$};
+        \draw[line width=1.4pt, blue!30!white, domain=-2:2, samples=50, smooth] plot (\x, {0.3*\x*\x+1.5});
+        \draw[line width=1.4pt, blue!30!white, domain=-2:2, samples=50, smooth] plot (\x, {-0.3*\x*\x-0.5});
+        \filldraw[red] (-0.4,-0.548) circle (2.5pt);
+        % ghost of original electron energy
+        \draw[blue, dashed] (0.4,1.548) circle (2.5pt);
+        % lowered electron
+        \filldraw[blue] (0.4,1.148) circle (2.5pt);
+        % ruler marking E_bin
+        \draw[black] (0.9,1.548) -- (1.1,1.548);
+        \draw[black] (0.9,1.148) -- (1.1,1.148);
+        \draw[black] (1.0,1.548) -- (1.0,1.148);
+        \node[black, right] at (1.15,1.348) {$E_{bin}$};
+    \end{tikzpicture}
+    \end{minipage}
+    \caption{Effect of the Coulomb attraction on an exciton's electron energy. (a) An electron in the conduction band and a hole in the valence band, with no interaction shown. (b) The Coulomb attraction $F_c$ between the electron and the hole. (c) As a bound pair, the electron's energy is reduced by the binding energy $E_{bin}$ relative to a free conduction-band electron at the same momentum.}
+    \label{fig:exciton_binding_diagram}
+\end{figure}
+
 An electron-hole pair composing an exciton in a solid crystal can be described as a pair of two particles with opposing charges, pulling on each other, while being screened by the lattice, those two form a hydrogen like series of states, that can be thought of as a picture of the electron and the hole circling eachother at a certain radius.\\
 Excitons in solid crystals are commonly divided to two kinds:
 \begin{itemize}
@@ -87,7 +150,7 @@ Other kinds of light-matter interactions also turn out behavior similar to Rydbe
 
 
 In the context of ARPES measurements demonstrating behavior of excitons, there is less abundance.
-The two features visible in ARPES measurements would be the modified state energy, and the unusual excitation lifetime.
+The first excitonic feature that would be visible in an ARPES measurement, is the modified state energy.
 In theory, if there are multiple Rydberg states with different energy levels, an ARPES measurement could demonstrate it, however there are limitations to the energy
 resolution, and also to the sensitivity to states with small populations.
 In practice there are no evidence for Rydberg series energy levels in ARPES measurements.
