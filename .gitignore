@@ -1,2 +1,8 @@
 *.pyc
 *pycache*
+*.aux
+*.blg
+*.fdb_latexmk
+*.flx
+*.log
+*.synctex.gz
