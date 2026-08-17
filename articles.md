@@ -44,3 +44,6 @@ hydrogen-like multiple absorption lines beyond a simple transition, suggesting a
 * https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.113.076802
 * WS2
 significance - showing existence of excitons with reflectance measurement.
+
+several minima in the reflectance spectrum, similar to Rydberg series, though not quite the same.
+deviation from Rydberg series behavior is attributed to the material being 2D, and thus changing the screening.
